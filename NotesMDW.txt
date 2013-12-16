@@ -1,0 +1,181 @@
+						Basic Terminal codes...
+Change directory to mdw folder:
+$ cd mdw
+
+Go up one folder:
+$ cd ..
+
+Finds the mdw folder then changes to that directory:
+$ cd ~/mdw
+
+Lists the files/directories in current folder:
+$ ls
+
+Other commands can be found at:
+http://guides.macrumors.com/Terminal
+
+
+						Rails Terminal codes...
+Create a new project titled mdw that doesn't include default testing:
+$ rails new mdw --skip-test-unit
+
+Update gems:
+$ bundle update
+$ bundle install --without production
+	Note: --without production is 'remembered' and will not need to be typed next time.
+
+Migrate up the database to include new changes/additions to the data model:
+$ bundle exec rake db:migrate
+	Note: After deploying to Heroku, run:
+	$ heroku run rake db:migrate
+
+Full list of commands to push to Heroku:
+$ git push heroku master
+$ heroku pg:reset DATABASE
+$ heroku run rake db:migrate
+$ heroku run rake db:populate
+	Note: The last line puts in the data from lib/tasks/sample_data.rake
+
+To force an app restart (if the list above didn't work):
+$ touch foo
+$ git add foo
+$ git commit -m "foo"
+$ git push heroku
+
+Reverse a migration:
+$ bundle exec rake db:rollback
+	Note: Can also do $ rake db:migrate VERSION=0 to go to original. Can switch out the number as well.
+
+Clear the database:
+$ bundle exec rake db:reset
+
+Populate the database with fake data via the Faker gem:
+$ bundle exec rake db:populate
+
+Create a test database for RSpec purposes:
+$ bundle exec rake db:test:prepare
+	Note: Ensures that db/development.sqlite3 is reflected in db/test.sqlite3. This should be run after a migration and sometimes gets corrupted. Running again will fix it.
+
+Start Rails server and view in browser:
+$ rails s
+http://localhost:3000/
+
+Interact with Rails application and try interactive Ruby:
+$ rails c
+	Note: Changes to variables are permanent here.
+
+Mess around with the application:
+$ rails c --sandbox
+
+
+						Setting up GitHub for a new project...
+1. Initialize a repository:
+$ git init
+
+2. Add the directory to list of files to be updated:
+$ git add .
+
+3. Submit for original commit
+$ git commit -m "Initial commit"
+
+4. Assuming you already have an account, go to GitHub,
+	 click on New repository, follow 2nd set of instructions
+https://github.com
+
+
+						Setting up Heroku for a new project...
+1. Create from command line:
+$ heroku create --stack cedar
+
+2. Push your Git up to Heroku:
+$ git push heroku master
+
+3. Rename the application to something meaningful:
+$ heroku apps:rename my-dysfunctional-workplace
+	Note: Do not rename it on Heroku's site, need to do command line
+
+4. Open to test that it worked:
+$ heroku open
+
+
+						Regular updates to Git and Heroku...
+1. Add files in the directory to what will be pushed:
+$ git add .
+
+2. Push to Git:
+$ git push
+
+3. Push to Heroku:
+$ git push heroku master
+
+4. View Heroku logs to troubleshoot
+$ heroku logs
+
+
+						Rails Terminal generation codes...
+Generate a controller for Static Pages for a Home
+and FAQ page with no default test framework:
+$ rails generate controller StaticPages home faq --no-test-framework
+	Note: To undo this, replace generate with destroy
+
+Generate a user model with just name and email:
+$ rails generate model User name:string email:string
+
+
+						RSpec, Capybara, and Cucumber...
+Generate a test suite for static pages:
+$ rails generate integration_test static_pages
+
+Run test-suite for entire spec folder:
+$ bundle exec rspec spec/
+
+Create a test database for RSpec purposes:
+$ bundle exec rake db:test:prepare
+	Note: Ensures that db/development.sqlite3 is reflected in db/test.sqlite3. This should be run after a migration and sometimes gets corrupted. Running again will fix it.
+
+
+						Active Record codes (all done inside the console)...
+Create a user (assuming User model already created):
+>> user = User.new(name: "Foo")
+>> user.save
+	Note: Could also combine these using create
+	User.create(name: "Foo")
+
+Find the first user (by primary key, typically is id):
+>> User.find(1)
+
+Return the value of an attribute:
+>> user.name
+
+Find by another attribute:
+>> User.find_by_name("Foo")
+	Note: ActiveRecord automatically creates this based off the attributes listed in the user table (found in 
+	db/migrate files). Creates one for each attribute.
+
+Find first user:
+>> User.first
+
+Find all users:
+>> User.all
+
+Update attributes individually:
+>> user.name = "Bar"
+>> user.save
+
+Update several attributes:
+>> user.update_attributes(name: "Bar")
+	Note: This is better for several attributes being updated. Also, it automatically saves. Can only update attributes that are marked accessible in the user model next to attr_accessible
+
+Bypass validations (i.e. change something for all users, even though you don't know their passwords):
+>> User.all.each { |user| user.save(validate: false) }
+
+See what environment you're in:
+>> Rails.env
+	Note: If in development, can run Rails.env.development? which will return true
+
+Run the console in test environment:
+$ rails console test
+
+Run the console for the deployed app:
+$ heroku run console
+	Note: This is good when you want to define someone as an admin and/or moderator.
