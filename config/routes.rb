@@ -1,6 +1,6 @@
 Tagenger::Application.routes.draw do
   get "users/new"
-  root to: 'ui#index'
+  root to: 'users#new'
 
   # This names it faq_path
   match '/signup',  to: 'users#new',        via: 'get'
