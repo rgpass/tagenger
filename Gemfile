@@ -25,7 +25,7 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
-group :development, :test do
+group :test, :development do
 	# TODO: Change to PostgreSQL on local env to lower chance of DB issues
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails' 
@@ -36,6 +36,7 @@ group :test do
 	gem 'selenium-webdriver', '2.35.1'
 	# Allows for testing in an English-like syntax
 	gem 'capybara', '2.1.0'
+	gem "shoulda-matchers"
 end
 
 group :production do
