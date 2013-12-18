@@ -1,0 +1,52 @@
+$lightGray: #cccccc;
+$grayOrange: #BDB09B;
+$darkOrange: #BA7B29;
+
+body {
+	background: gray;
+}
+
+.navbar.navbar-default.newnav a {
+	color: orange;
+}
+
+.newnav {
+	background: gray;
+	margin: 0;
+	border: 0;
+	border-radius:0;
+}
+
+.landing-top, .landing-middle {
+	text-align: center;
+	background: $lightGray;
+	margin: 0;
+	padding: 20px;
+}
+
+.landing-top h1 {
+	font-size: 50px;
+	color: orange
+}
+
+.landing-top h2 {
+	color: $darkOrange;
+}
+
+.landing-middle {
+	background: $grayOrange;
+	border-radius: 5px;
+	margin:20px;
+}
+
+.inline {
+	display: inline;
+}
+
+.border {
+	border: 2px solid black;
+}
+
+.small-margin {
+	margin: 10px;
+}
