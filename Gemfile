@@ -13,21 +13,26 @@ gem 'coffee-rails', '4.0.1'
 
 gem 'jquery-rails', '3.0.4'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '1.1.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '1.0.2'
 
 # Bootstrap 3
 gem 'anjlab-bootstrap-rails', '~> 3.0.3.0', :require => 'bootstrap-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'sdoc', '0.3.20', require: false
 end
 
 group :development do
 	# TODO: Change to PostgreSQL on local env to lower chance of DB issues
 	gem 'sqlite3', '1.3.8'
+end
+
+group :production do
+	gem 'pg', '0.15.1'
+	gem 'rails_12factor', '0.0.2'
 end
 
 # Use ActiveModel has_secure_password
