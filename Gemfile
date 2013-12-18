@@ -31,7 +31,9 @@ group :development do
 end
 
 group :production do
+	# PostgreSQL DB for production
 	gem 'pg', '0.15.1'
+	# 12factor is used by Heroku to serve static assets such as images and stylesheets
 	gem 'rails_12factor', '0.0.2'
 end
 
