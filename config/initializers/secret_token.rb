@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tagenger::Application.config.secret_key_base = '3424a86df4f5e3dcfe715618c90760743ed3d402daeb9cde7ccba09229f8e6e8e469c44efd53426faea97086266260b1dabe9a729171135ef466fc3330d51be4'
+require 'securerandom'
+
+def secure_token
+	token_file = Rails.root.join('.secret')
+	if File.exist?(token_file)
+		# Use the existing token
+		File.read(token_file).chomp
+	else
+		# Generate a new token and store it in token_file
+		token = SecureRandom.hex(64)
+		File.write(token_file, token)
+		token
+	end
+end
+
+Tagenger::Application.config.secret_key_base = secure_token
