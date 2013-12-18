@@ -28,7 +28,7 @@ end
 group :development, :test do
 	# TODO: Change to PostgreSQL on local env to lower chance of DB issues
 	gem 'sqlite3', '1.3.8'
-	gem 'rspec-rails', '2.13.1' 
+	gem 'rspec-rails' 
 end
 
 group :test do
