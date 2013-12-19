@@ -7,5 +7,10 @@ describe "StaticPages" do
       visit '/static_pages/faq'
       expect(page).to have_content( 'FAQ' )
     end
+
+    it "should have the page title" do
+    	visit '/static_pages/faq'
+    	expect(page).to have_title('Tagenger | FAQ')
+    end
   end
 end
