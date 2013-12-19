@@ -16,9 +16,10 @@
               <% if signed_in? %>
                 <li><%= link_to "Submit", '#' %></li>
                 <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
               <% else %>
-                <li><a href="#">Sign in</a></li>
+                <li><%= link_to "Sign in", signin_path %></li>
                 <li><%= link_to "Sign up", signup_path %></li>
               <% end %>
                 <li><%= link_to "FAQ", faq_path %></li>
