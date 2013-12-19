@@ -7,6 +7,6 @@ Tagenger::Application.routes.draw do
   match '/signup',  to: 'users#new',        via: 'get'
   match '/faq',     to: 'static_pages#faq', via: 'get'
   match '/ui',   to: 'ui#index',         via: 'get'
-  # get 'ui(/:action)', controller: 'ui'
+  get 'ui(/:action)', controller: 'ui'
   
 end
