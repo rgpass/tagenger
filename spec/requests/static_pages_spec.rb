@@ -4,7 +4,7 @@ describe "StaticPages" do
 
   describe "FAQ page" do
     it "should have the content 'FAQ'" do
-      visit '/static_pages/faq'
+      visit faq_path
       expect(page).to have_content( 'FAQ' )
     end
 
