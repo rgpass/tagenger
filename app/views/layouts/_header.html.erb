@@ -14,11 +14,15 @@
           </div>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#"></a></li>
-              <li><a href="#">Sign In</a></li>
-              <li><%= link_to "Sign up", signup_path %></li>
-              <li><a href="#">About</a></li>
-              <li><%= link_to "FAQ", faq_path %></li>
+              <% if signed_in? %>
+                <li><%= link_to "Submit", '#' %></li>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+              <% else %>
+                <li><a href="#">Sign in</a></li>
+                <li><%= link_to "Sign up", signup_path %></li>
+              <% end %>
+                <li><%= link_to "FAQ", faq_path %></li>
             </ul>
             <!-- <ul class="nav navbar-nav navbar-right">
               <li><a href="#">Link</a></li>
