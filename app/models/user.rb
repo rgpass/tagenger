@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
 	validates :tag, presence: true
 	has_secure_password
 	validates :password, length: { minimum: 6}
+	validates :tndcheck, presence: true
 end

@@ -8,3 +8,7 @@ Models
 	Message -- belongs to User
 		content		string or text if allowing 200 chars
 		tag_id		string
+
+
+Run Heroku console
+$ heroku run console

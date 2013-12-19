@@ -36,7 +36,10 @@ group :test do
 	gem 'selenium-webdriver', '2.35.1'
 	# Allows for testing in an English-like syntax
 	gem 'capybara', '2.1.0'
+	# Makes RSpec test writing easier
 	gem "shoulda-matchers"
+	# Allows for factory production in RSpec
+	gem 'factory_girl_rails', '4.2.1'
 end
 
 group :production do
