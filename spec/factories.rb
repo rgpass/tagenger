@@ -11,4 +11,8 @@ FactoryGirl.define do
     	admin true
     end
   end
+
+  factory :tag do
+    sequence(:tag_number) { |n| "GA123#{n}"}
+  end
 end
