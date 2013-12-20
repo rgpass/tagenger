@@ -1,5 +1,4 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
 
 <div class="row">
   <div class="col-md-4">
@@ -7,7 +6,7 @@
     	<%= render 'shared/error_messages' %>
 
       <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, class:"form-control input-lg" %>
 
       <%= f.label :last_initial %>
       <%= f.text_field :last_initial %>
@@ -30,5 +29,40 @@
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
+  </div>
+</div>
+
+<!-- not signed in -->
+
+<div class="landing-top">
+  <h1>Tagenger</h1>
+  <h2>leave messages for drivers</h2>
+</div>
+
+<div class="container">
+  <div class="landing-middle">
+    <section id="sign-up" class="clearfix">
+      
+      <div class="col-sm-4">
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages' %>
+          <h4 class="small-margin text-left"> Sign Up </h4>
+          <div class="small-margin"><input type="text" id="tag" name="tag" class="form-control input-lg" placeholder="Your Tag #" required /></div>
+          <div class="small-margin"><input type="text" id="email" name="email" class="form-control input-lg" placeholder="email" required /></div>
+          <div class="small-margin"><input type="text" id="first_name" name="first_name" class="form-control input-lg" placeholder="first name" required /></div>
+          <div class="small-margin"><input type="text" id="last_initial" name="last_initial" class="form-control input-lg" placeholder="last initial" required /></div>
+          <div class="small-margin"><input type="password" id="password" name="password" class="form-control input-lg" placeholder="password" required /></div>
+          <div class="small-margin"><button class="btn btn-block btn-lg btn-theme">Sign Up</button></div>
+        </form>
+      </div><!-- Sign Up -->  
+      <div class="col-sm-8">
+        <h4 class="text-left">Already a member? <a href="">Sign In</a></h4>
+        <h2 class="text-left">Tagenger allows you to</h2>
+        <ul id="landing-bullets" class="text-left">
+          <li>Leave messages for other car owners anonymously.</li>
+          <li>Receive messages from other drivers.</li>
+        </ul>
+      </div>
+    </section><!--subscribe--> 
   </div>
 </div>
