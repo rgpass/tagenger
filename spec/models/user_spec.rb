@@ -1,7 +1,6 @@
 # t.string :first_name
 # t.string :last_initial
 # t.string :email
-# t.string :tag
 # t.string :password_digest
 # t.boolean :tndcheck
 
@@ -11,8 +10,7 @@ describe User do
 
 	before do
 		@user = User.new(first_name: "Example", last_initial: "U", email: "user@example.com",
-										 tag: "GA123456", password: "foobar", password_confirmation: "foobar",
-										 tndcheck: true)
+										 password: "foobar", password_confirmation: "foobar", tndcheck: true)
 	end
 
 	subject { @user }
@@ -20,7 +18,6 @@ describe User do
 	it { should respond_to(:first_name) }
 	it { should respond_to(:last_initial) }
 	it { should respond_to(:email) }
-	it { should respond_to(:tag) }
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
@@ -95,8 +92,7 @@ describe User do
   describe "when password is not present" do
   	before do
       @user = User.new(first_name: "Example", last_initial: "U", email: "user@example.com",
-										 	 tag: "GA123456", password: " ", password_confirmation: " ",
-										 	 tndcheck: true)
+										 	 password: " ", password_confirmation: " ", tndcheck: true)
     end
     it { should_not be_valid }
   end
