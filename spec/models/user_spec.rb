@@ -25,6 +25,7 @@ describe User do
 	it { should respond_to(:authenticate) }
 	it { should respond_to(:tndcheck) }
   it { should respond_to(:admin) }
+  it { should respond_to(:user_tags) }
 
   it { should be_valid }
   it { should_not be_admin }
