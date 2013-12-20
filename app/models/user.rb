@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6}
 	validates :tndcheck, presence: true
 
-	has_many :tags, through: :user_tags, foreign_key: "tag_id"
+
+	has_many :user_tags, foreign_key: "tag_id"
+	has_many :tags, through: :user_tags, source: :tags
 
 	def User.new_remember_token
     SecureRandom.urlsafe_base64
