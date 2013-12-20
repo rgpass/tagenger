@@ -1,3 +1,5 @@
+# TODO: All of Hartl chap 9 exercises
+
 require 'spec_helper'
 
 describe "Authentication" do
