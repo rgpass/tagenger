@@ -1,2 +1,6 @@
 <% provide(:title, @user.first_name) %>
 <%= @user.first_name %> <%= @user.last_initial %>
+<%= @sent_messages %>
+<% @received_messages.each do |message| %>
+	<%= message.content %>
+<% end %>
