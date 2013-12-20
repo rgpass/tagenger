@@ -1,8 +1,12 @@
 /* Mixins, variables, etc */
-$lightGray: #cccccc;
-$grayOrange: #BDB09B;
+$white: #FFFFFF;
+$lightGray: rgb(238,238,238);
+$orange: #FF9900;
+$lightOrange: #FCC879;
 $darkOrange: #BA7B29;
+$darkGray: #404040;
 $grayMediumLight: #eaeaea;
+
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -14,39 +18,50 @@ $grayMediumLight: #eaeaea;
 /* pages */
 body {
 	background: gray;
+		margin:0;
+	padding:0;
 }
 
+.container {
+	margin:0;
+	padding:0;
+}
 .navbar.navbar-default.newnav a {
-	color: orange;
+	color: $orange;
 }
 
 .newnav {
-	background: gray;
+	background: white;
 	margin: 0;
 	border: 0;
 	border-radius:0;
 }
 
+.license-plate {
+	background: white;
+	border: 2px solid black;
+	border-radius: 2px;
+}
+
 .landing-top, .landing-middle {
 	text-align: center;
-	background: $lightGray;
+	background: $lightOrange;
 	margin: 0;
-	padding: 20px;
+	padding: 40px;
+
 }
 
 .landing-top h1 {
 	font-size: 50px;
-	color: orange
+	color: $darkGray;
 }
 
 .landing-top h2 {
-	color: $darkOrange;
+	color: $darkGray;
 }
 
 .landing-middle {
-	background: $grayOrange;
-	border-radius: 5px;
-	margin:20px;
+	background: gray;
 }
 
 #landing-bullets {

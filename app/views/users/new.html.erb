@@ -1,58 +1,34 @@
 <% provide(:title, 'Sign up') %>
 
-<div class="row">
-  <div class="col-md-4">
-    <%= form_for(@user) do |f| %>
-    	<%= render 'shared/error_messages' %>
-
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, class:"form-control input-lg" %>
-
-      <%= f.label :last_initial %>
-      <%= f.text_field :last_initial %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <!-- TODO: Turn this into a checkbox -->
-      <%= f.label :tndcheck %>
-      <%= f.check_box :tndcheck %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
-</div>
-
 <!-- not signed in -->
 
 <div class="landing-top">
-  <h1>Tagenger</h1>
-  <h2>leave messages for drivers</h2>
+  <h1>Tagenger</h1><h3>leave messages for drivers</h3>
 </div>
 
-<div class="container">
   <div class="landing-middle">
     <section id="sign-up" class="clearfix">
-      
+
       <div class="col-sm-4">
         <%= form_for(@user) do |f| %>
           <%= render 'shared/error_messages' %>
           <h4 class="small-margin text-left"> Sign Up </h4>
-          <div class="small-margin"><input type="text" id="tag" name="tag" class="form-control input-lg" placeholder="Your Tag #" required /></div>
-          <div class="small-margin"><input type="text" id="email" name="email" class="form-control input-lg" placeholder="email" required /></div>
-          <div class="small-margin"><input type="text" id="first_name" name="first_name" class="form-control input-lg" placeholder="first name" required /></div>
-          <div class="small-margin"><input type="text" id="last_initial" name="last_initial" class="form-control input-lg" placeholder="last initial" required /></div>
-          <div class="small-margin"><input type="password" id="password" name="password" class="form-control input-lg" placeholder="password" required /></div>
-          <div class="small-margin"><button class="btn btn-block btn-lg btn-theme">Sign Up</button></div>
-        </form>
-      </div><!-- Sign Up -->  
-      <div class="col-sm-8">
+          
+          <%= f.text_field :first_name, class:"form-control input-lg small-margin", placeholder:"First Name"  %>
+          <%= f.text_field :last_initial, class:"form-control input-lg small-margin", placeholder:"Last Initial" %>
+          <%= f.text_field :email, class:"form-control input-lg small-margin", placeholder:"Email" %>
+          <%= f.password_field :password, class:"form-control input-lg small-margin", placeholder:"Password"  %>
+          <%= f.password_field :password_confirmation, class:"form-control input-lg small-margin", placeholder:"Password Confirmation"  %>
+
+          <!-- TODO: Turn this into a checkbox -->
+          <%= f.label :tndcheck %>
+          <%= f.check_box :tndcheck %>
+
+          <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+       
+      <div class="col-sm-6">
         <h4 class="text-left">Already a member? <a href="">Sign In</a></h4>
         <h2 class="text-left">Tagenger allows you to</h2>
         <ul id="landing-bullets" class="text-left">
@@ -61,5 +37,5 @@
         </ul>
       </div>
     </section><!--subscribe--> 
-  </div>
+
 </div>
