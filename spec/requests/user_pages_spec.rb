@@ -6,7 +6,7 @@ describe "User pages" do
 
   subject { page }
 
-  describe "index" do
+  describe "Index" do
     let(:user) { FactoryGirl.create(:user) }
     before(:each) do
       sign_in user
@@ -16,7 +16,7 @@ describe "User pages" do
     it { should have_title('All users') }
     it { should have_content('All users') }
 
-    describe "pagination" do
+    describe "Pagination" do
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }
@@ -30,11 +30,11 @@ describe "User pages" do
       end
     end
 
-    describe "delete links" do
+    describe "Delete links" do
 
       it { should_not have_link('delete') }
 
-      describe "as an admin user" do
+      describe "As an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
         before do
           sign_in admin
@@ -53,7 +53,7 @@ describe "User pages" do
 
   end
 
-  describe "signup page" do
+  describe "Signup page" do
     before { visit signup_path }
 
     it { should have_content('Sign up') }
@@ -61,28 +61,27 @@ describe "User pages" do
 
     let(:submit) { "Create my account" }
 
-    describe "with invalid information" do
+    describe "With invalid information" do
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
     end
 
-    describe "with valid information" do
+    describe "With valid information" do
       before do
         fill_in "user_first_name",   with: "Example"
         fill_in "user_last_initial", with: "U"
         fill_in "user_email",        with: "user@example.com"
-        fill_in "user_tag",					with: "GA123456"
         fill_in "user_password",     with: "foobar"
         fill_in "user_password_confirmation", with: "foobar"
         page.check("user_tndcheck")
       end
 
-      it "should create a user" do
+      it "Should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
 
-      describe "after saving the user" do
+      describe "After saving the user" do
         before { click_button submit }
         let(:user) { User.find_by(email: 'user@example.com') }
 
@@ -93,7 +92,7 @@ describe "User pages" do
     end
   end
 
-  describe "profile page" do
+  describe "Profile page" do
   	let(:user) { FactoryGirl.create(:user) }
   	before { visit user_path(user) }
 
@@ -105,25 +104,25 @@ describe "User pages" do
   # TODO: Add tests for error messages
   # TODO: Add tests for post-save forwarding
 
-  describe "edit" do
+  describe "Edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do 
       sign_in user
       visit edit_user_path(user) 
     end
 
-    describe "page" do
+    describe "Page" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
     end
 
-    describe "with invalid information" do
+    describe "With invalid information" do
       before { click_button "Save changes" }
 
       it { should have_content('error') }
     end
 
-    describe "with valid information" do
+    describe "With valid information" do
       let(:new_name)  { "NewName" }
       let(:new_email) { "new@example.com" }
       before do
