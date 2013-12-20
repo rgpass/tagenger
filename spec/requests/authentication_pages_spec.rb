@@ -1,4 +1,6 @@
 # TODO: All of Hartl chap 9 exercises
+# TODO: Limit access to user index
+# TODO: Limit access to user show
 
 require 'spec_helper'
 

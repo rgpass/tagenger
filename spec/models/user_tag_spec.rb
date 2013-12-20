@@ -1,3 +1,5 @@
+# TODO: Add relationship testing
+
 require 'spec_helper'
 
 describe UserTag do
