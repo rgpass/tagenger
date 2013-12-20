@@ -1,7 +1,7 @@
 Tagenger::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  # resources :messages
+  resources :messages
 
   root to: 'users#new'
   #'/ui' to: 'ui#index'   # This was causing a redirect loop on Heroku
@@ -10,6 +10,7 @@ Tagenger::Application.routes.draw do
   match '/signin',  to: 'sessions#new', 		via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/faq',     to: 'static_pages#faq', via: 'get'
+  match '/submit',  to: 'messages#new',     via: 'get'
 
   # UI routes
   match '/ui',      to: 'ui#index',         via: 'get'

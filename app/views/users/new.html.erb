@@ -20,9 +20,10 @@
           <%= f.password_field :password, class:"form-control input-lg small-margin", placeholder:"Password"  %>
           <%= f.password_field :password_confirmation, class:"form-control input-lg small-margin", placeholder:"Password Confirmation"  %>
 
-          <!-- TODO: Turn this into a checkbox -->
           <%= f.label :tndcheck %>
           <%= f.check_box :tndcheck %>
+
+          <!-- TODO: Add tags field here. May actually be better on a separate page. -->
 
           <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
         <% end %>

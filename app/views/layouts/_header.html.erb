@@ -15,6 +15,8 @@
             <ul class="nav navbar-nav">
               <% if signed_in? %>
                 <li><%= link_to "Submit", '#' %></li>
+                <!-- TODO: Limit so "Users" only visible to admin -->
+                <!-- TODO: Add test for the visibility + what happens when visiting Users not as admin -->
                 <li><%= link_to "Users", users_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
