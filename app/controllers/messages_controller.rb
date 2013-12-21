@@ -28,4 +28,8 @@ class MessagesController < ApplicationController
 		def message_params
 			params.require(:message).permit(:tag_number, :content, :user_id)
 		end
+
+		# TODO: Add correct_user
+		# TODO: Add message_owner
+		# TODO: Add admin_user
 end

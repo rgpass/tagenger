@@ -14,7 +14,7 @@
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
               <% if signed_in? %>
-                <li><%= link_to "Submit", '#' %></li>
+                <li><%= link_to "Submit", submit_path %></li>
                 <!-- TODO: Limit so "Users" only visible to admin -->
                 <!-- TODO: Add test for the visibility + what happens when visiting Users not as admin -->
                 <li><%= link_to "Users", users_path %></li>
