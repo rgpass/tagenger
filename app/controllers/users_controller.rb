@@ -29,13 +29,6 @@ class UsersController < ApplicationController
     @user.tags.each do |tag|
       @received_messages += Message.find_all_by_tag_number(tag.tag_number)
     end
-
-
-    # @received_messages = @user.tags.each do |tag| 
-    #   message = Message.find_all_by_tag_number(tag.tag_number)
-    #   return message
-    # end
-
     @sent_messages = @user.messages
   end
 

@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  # Call this with current_user.add_tag!(tag_number)
+  # TODO: Determine if this should be add_tag! and create!
+  def add_tag(tag_number)
+  	user_tags.create(tag_id: Tag.find_by_tag_number(tag_number).id)
+  end
+
   private
 
     def create_remember_token
