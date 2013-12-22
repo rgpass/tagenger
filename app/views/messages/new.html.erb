@@ -7,9 +7,38 @@
   <%= f.text_field :content, class:"form-control input-lg small-margin", placeholder:"Content" %>
   <%= f.hidden_field :user_id %>
 
-  <!-- TODO: Incorporate ui/signed-in.html.erb -->
-
   <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 <% end %>
+
+
+
+
+
+<div class="container">
+  <div class="landing-middle">
+    <section id="sign-up" class="clearfix">
+      <form role="form" action="" method="post">
+      <%# form_for(@message) do |f| %>
+      <h3>PLEASE DON'T TEXT AND DRIVE</h3>
+      <%= render 'shared/states' %></br>
+      <%# f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
+        <div class="btn btn-default quick-message">Left Lane: Fast Lane</div>
+        <div class="btn btn-default quick-message">No Turn Signal</div>
+        <div class="btn btn-default quick-message">Endless Turn Signal</div>
+        <div class="btn btn-default quick-message">Lots of Space</div>
+        <div class="btn btn-default quick-message">Bad Park Job</div>
+        <div class="btn btn-default quick-message">Left Your Lights On</div>
+        <div class="btn btn-default quick-message">Caught You Picking Your Nose</div>
+      </br>
+      <input class="form-control input-lg" type="textarea" name="message" placeholder="Enter your message here">
+      <%# f.text_field :content, class:"form-control input-lg small-margin", placeholder:"Content" %>
+      <%# f.hidden_field :user_id %>
+      <div class="small-margin">
+        <button class="btn btn-block btn-lg btn-theme">Submit</button>
+        <%# f.submit "Submit", class: "btn btn-large btn-primary" %>
+      </div>
+    </section>
+  </div>
+</div>
 
 <br /><br />Submitting from <%= current_user.first_name %> <%= current_user.last_initial %>

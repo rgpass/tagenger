@@ -1,31 +1,49 @@
 <% provide(:title, @user.first_name) %>
-
-<div class="well">
-	<%= @user.first_name %> <%= @user.last_initial %> <br />
-	My Tags: <% @user.tags.each do |tag| %> <%= tag.tag_number %> <% end %>
-</div>
-
-<div class="well">
-Number of sent messages: <%= @sent_messages.count %> <br />
-
-
-	<% @sent_messages.each do |message| %>
-		Content: <%= message.content %> <br />
-		Tag number: <%= message.tag_number %> <br />
-		Date: <%= message.created_at %> <br />
-	<% end %>
-<!-- TODO: Add in delete functionality for sent messages -->
-</div>
-
-
-<div class="well">
-Number of received messages: <%= @received_messages.count %><br />
-
-<% @received_messages.each do |message| %>
-	Content: <%= message.content %> <br /> 
-	Tag Number: <%= message.tag_number %> <br />
-	Users name: <%= message.user.first_name %> <%= message.user.last_initial %>. <br />
-	<!-- TODO: Create helper to combine first_name and last_initial -->
-	Date: <%= message.created_at %>
-<% end %>
+<div class="row">
+	<aside class="col-md-2 left-pad">
+		<h3><%= @user.first_name %> <%= @user.last_initial %></h3>
+		| <%= link_to "delete profile", '#' %>
+		<h3>Stats</h3>
+		<p>
+			<%= @sent_messages.count %> sent <%= 'message'.pluralize(@sent_messages.count) %>
+		</p>
+		<p>
+			<%= @received_messages.count %> received <%= 'message'.pluralize(@received_messages.count) %>
+		</p>
+		<p>
+			Created <%= time_ago_in_words(@user.created_at) %> ago.
+		</p>
+		<h3>My Tags: </h3>
+		<% @user.tags.each do |tag| %> 
+			<p><%= tag.tag_number %> </p>
+		<% end %>
+	</aside>
+	<div class="col-md-7 left-pad">
+		<h3>Sent Messages</h3>
+		<% @sent_messages.each do |message| %>
+			<div class="row">
+				<div class="col-md-2"><%= message.tag_number %></div>
+				<div class="col-md-10"><%= message.content %> </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+				</div>
+			</div>
+			<hr>
+		<% end %>
+		<h3>Received Messages</h3>
+		<% @received_messages.each do |message| %>
+			<div class="row">
+				<div class="col-md-2"><%= message.tag_number %></div>
+				<div class="col-md-10"><%= message.content %> </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+				</div>
+			</div>
+			<hr>
+		<% end %>
+	</div>
 </div>

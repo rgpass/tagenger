@@ -73,7 +73,11 @@ body {
 }
 
 .border {
-	border: 2px solid black;
+	border: 2px dashed green;
+}
+
+.textright {
+	text-align: right;
 }
 
 .small-margin {
@@ -91,7 +95,7 @@ body {
 	display: inline-block;
 	border: 4px solid black;
 	border-radius: 5px;
-	font-size: 30px;
+	font-size: 20px;
 	margin: 20px;
 }
 
@@ -152,4 +156,8 @@ input {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+.left-pad {
+	padding-left: 30px;
 }

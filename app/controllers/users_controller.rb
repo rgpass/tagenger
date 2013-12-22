@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # TODO: Discuss separating received messages by specific tag
   def show
     @user = User.find(params[:id])
     @received_messages = []
