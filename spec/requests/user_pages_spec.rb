@@ -105,6 +105,7 @@ describe "User pages" do
   # TODO: Add tests for post-save forwarding
   # TODO: Add tests for sent messages, including if nil
   # TODO: Add tests for received messages, including if nil
+  # TODO: Show error messages when saving erroneous tags
 
   describe "Edit" do
     let(:user) { FactoryGirl.create(:user) }

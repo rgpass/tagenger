@@ -14,9 +14,20 @@
 			Created <%= time_ago_in_words(@user.created_at) %> ago.
 		</p>
 		<h3>My Tags: </h3>
+		<!-- Show tags -->
 		<% @user.tags.each do |tag| %> 
 			<p><%= tag.tag_number %> </p>
 		<% end %>
+
+		<!-- Adding a tag -->
+			<!-- Find if tag exists -->
+				<!-- If exists, add connection -->
+				<!-- If it doesn't, create tag, then create connection -->
+		<%= form_for Tag.new do |f| %>
+			<%= f.text_field :tag_number, placeholder: "Tag Number" %>
+			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+
 	</aside>
 	<div class="col-md-7 left-pad">
 		<h3>Sent Messages</h3>

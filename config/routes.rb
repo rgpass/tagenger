@@ -2,6 +2,7 @@ Tagenger::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :messages
+  resources :tags, only: [:create, :destroy]
 
   root to: 'users#new'
   #'/ui' to: 'ui#index'   # This was causing a redirect loop on Heroku
