@@ -2,7 +2,7 @@
 <div class="row">
 	<aside class="col-md-2 left-pad">
 		<h3><%= @user.first_name %> <%= @user.last_initial %></h3>
-		| <%= link_to "delete profile", '#' %>
+		<%= link_to "delete profile", '#' %>
 		<h3>Stats</h3>
 		<p>
 			<%= @sent_messages.count %> sent <%= 'message'.pluralize(@sent_messages.count) %>
@@ -14,47 +14,54 @@
 			Created <%= time_ago_in_words(@user.created_at) %> ago.
 		</p>
 		<h3>My Tags: </h3>
-		<!-- Show tags -->
 		<% @user.tags.each do |tag| %> 
 			<p><%= tag.tag_number %> </p>
 		<% end %>
 
-		<!-- Adding a tag -->
-			<!-- Find if tag exists -->
-				<!-- If exists, add connection -->
-				<!-- If it doesn't, create tag, then create connection -->
 		<%= form_for Tag.new do |f| %>
 			<%= f.text_field :tag_number, placeholder: "Tag Number" %>
-			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+			<%= f.submit "Add", class: "btn btn-large btn-primary" %>
 		<% end %>
 
 	</aside>
 	<div class="col-md-7 left-pad">
 		<h3>Sent Messages</h3>
-		<% @sent_messages.each do |message| %>
-			<div class="row">
-				<div class="col-md-2"><%= message.tag_number %></div>
-				<div class="col-md-10"><%= message.content %> </div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+		<% if @sent_messages.count == 0 %>
+			You haven't sent any messages! Go ahead, <%= link_to 'send some out', submit_path %>!
+		<% else %>
+			<% @sent_messages.each do |message| %>
+				<div class="row">
+					<div class="col-md-2"><%= message.tag_number %></div>
+					<div class="col-md-10"><%= message.content %> </div>
 				</div>
-			</div>
-			<hr>
+				<div class="row">
+					<div class="col-md-12">
+						Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+					</div>
+				</div>
+				<hr>
+			<% end %>
 		<% end %>
 		<h3>Received Messages</h3>
-		<% @received_messages.each do |message| %>
-			<div class="row">
-				<div class="col-md-2"><%= message.tag_number %></div>
-				<div class="col-md-10"><%= message.content %> </div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+		<% if @received_messages.count == 0 %>
+			<% if @user.tags.count == 0 %>
+				You have to add your license plates! Look under My Tags on this page.
+			<% else %>
+				No one has sent you a message -- yet. Check back in a couple days.
+			<% end %>
+		<% else %>
+			<% @received_messages.each do |message| %>
+				<div class="row">
+					<div class="col-md-2"><%= message.tag_number %></div>
+					<div class="col-md-10"><%= message.content %> </div>
 				</div>
-			</div>
-			<hr>
+				<div class="row">
+					<div class="col-md-12">
+						Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+					</div>
+				</div>
+				<hr>
+			<% end %>
 		<% end %>
 	</div>
 </div>

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+	# TODO: Redirect to Profile page if signed in
 	def new
 	end
 

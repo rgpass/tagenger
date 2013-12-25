@@ -9,15 +9,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand brand" href="#">Tagenger</a>
+            <%= link_to 'Tagenger', root_path, class: "navbar-brand brand" %>
           </div>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
+              <li><%= link_to "FAQ", faq_path %></li>
               <% if signed_in? %>
                 <li><%= link_to "Submit", submit_path %></li>
-                <!-- TODO: Limit so "Users" only visible to admin -->
                 <!-- TODO: Add test for the visibility + what happens when visiting Users not as admin -->
-                <li><%= link_to "Users", users_path %></li>
+                <% if current_user.try(:admin?) %>
+                  <li><%= link_to "Users", users_path %></li>
+                <% end %>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
@@ -25,7 +27,7 @@
                 <li><%= link_to "Sign in", signin_path %></li>
                 <li><%= link_to "Sign up", signup_path %></li>
               <% end %>
-                <li><%= link_to "FAQ", faq_path %></li>
+                
             </ul>
             <!-- <ul class="nav navbar-nav navbar-right">
               <li><a href="#">Link</a></li>
