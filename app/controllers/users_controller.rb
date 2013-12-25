@@ -23,13 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
-  # TODO: Discuss separating received messages by specific tag
   def show
     @user = User.find(params[:id])
     @received_messages = []
     @user.tags.each do |tag|
       @received_messages += Message.find_all_by_tag_number(tag.tag_number)
     end
+    # Sorts @received_messages by created_at date
+    @received_messages.sort! {|a,b| a.created_at <=> b.created_at }
     @sent_messages = @user.messages
   end
 
