@@ -30,8 +30,17 @@ Caught picking nose: <%= image_tag("icon_19495.svg") %> <br />
     <section id="sign-up" class="clearfix">
       <form role="form" action="" method="post">
       <%# form_for(@message) do |f| %>
-      <h3>PLEASE DON'T TEXT AND DRIVE</h3>
-      <%= render 'shared/states' %></br>
+      <h1>PLEASE DON'T TEXT AND DRIVE</h3>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+          <%= render 'shared/states2' %>
+        </div>
+        <div class="col-md-2">
+          <!-- TODO: Replace with Rails form and figure out Rails/jQuery to combine states and plate number inputs -->
+          <!-- http://stackoverflow.com/questions/11144030/using-multiple-input-fields-for-one-attribute -->
+          <input type="text" class="form-control" placeholder="Plate Number">
+        </div>
+      </div>
       <%# f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
         <div class="btn btn-default quick-message">Left Lane: Fast Lane</div>
         <div class="btn btn-default quick-message">No Turn Signal</div>
