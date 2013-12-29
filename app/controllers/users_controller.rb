@@ -30,8 +30,10 @@ class UsersController < ApplicationController
       @received_messages += Message.find_all_by_tag_number(tag.tag_number)
     end
     # Sorts @received_messages by created_at date
-    @received_messages.sort! {|a,b| a.created_at <=> b.created_at }
+    @received_messages.sort! {|a,b| b.created_at <=> a.created_at }
     @sent_messages = @user.messages
+    # Another way to sort messages. sort! wasn't working for some reason
+    @sent_messages = @sent_messages.order("created_at DESC")
   end
 
   def edit

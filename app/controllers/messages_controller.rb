@@ -1,7 +1,6 @@
-# TODO: Populate with new
 class MessagesController < ApplicationController
 	# TODO: Add before_save test for signed_in
-	# TODO: Add before_save test for correct_user
+	# TODO: Add test for correct_user
 	# before_action :signed_in_user, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
 
@@ -39,7 +38,6 @@ class MessagesController < ApplicationController
 			redirect_to root_url if @message.nil?
 		end
 
-		# TODO: Add correct_user
 		# TODO: Add message_owner
 		# TODO: Add admin_user
 end
