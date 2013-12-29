@@ -1,3 +1,4 @@
+<!-- TODO: Test a long, single word message. Should wrap around, not cause horizontal scrolling -->
 <% provide(:title, @user.first_name) %>
 <div class="row">
 	<aside class="col-md-2 left-pad">
@@ -37,6 +38,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
+						<% if current_user?(message.user) %>
+						 | <%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" }, title: message.content %>
+						<% end %>
 					</div>
 				</div>
 				<hr>
