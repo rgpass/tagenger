@@ -1,4 +1,5 @@
 # TODO: Add authentication test so index only visible to admins, remove it for other users
+# TODO: Add delete links test and delete functionality test
 
 require 'spec_helper'
 
