@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+	before_action :parse_tag, only: :create
 
 	def new
 		@tag = Tag.new
@@ -32,6 +33,10 @@ class TagsController < ApplicationController
 		def tag_exist?
 			# Tag.find_by_tag_number(tag_params)
 			Tag.find_by_tag_number(params[:tag_number])
+		end
+
+		# Testing this out in the messages_controller first
+		def parse_tag
 		end
 
 end

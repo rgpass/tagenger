@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
 	# before_action :signed_in_user, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
 
+	attr_accessor :tag_state
+
 	def new
 		@message = Message.new
 		@user = current_user
@@ -13,6 +15,7 @@ class MessagesController < ApplicationController
 		@message = Message.new(message_params)
 		@message.user_id = current_user.id
 		@user = current_user
+		@message[:tag_number] = @message[:tag_state] + @message[:tag_number]
 		if @message.save
       # sign_in @user
       flash[:success] = "Message sent!"
@@ -24,7 +27,7 @@ class MessagesController < ApplicationController
 
 	def destroy
 		@message.destroy
-		redirect_to root_url
+		redirect_to current_user
 	end
 
 	private
