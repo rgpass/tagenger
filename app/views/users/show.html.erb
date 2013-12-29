@@ -23,9 +23,12 @@
 			</p>
 		<% end %>
 
+		<h5>Add a Tag</h5>
 		<%# Add state selector here as well and parse it in tags controller %>
-		<%= form_for Tag.new do |f| %>
+		<%= form_for @tag do |f| %>
+			<%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, include_blank: "What State?"}, { class: "form-control"}) %>
 			<%= f.text_field :tag_number, placeholder: "Tag Number" %>
+			
 			<%= f.submit "Add", class: "btn btn-large btn-primary" %>
 		<% end %>
 

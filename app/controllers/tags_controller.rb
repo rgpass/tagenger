@@ -6,6 +6,7 @@ class TagsController < ApplicationController
 	end
 
 	def create
+
 		if tag_exist?
 			@tag = Tag.find_by_tag_number(tag_params)
 		else
@@ -37,6 +38,15 @@ class TagsController < ApplicationController
 
 		# Testing this out in the messages_controller first
 		def parse_tag
+			tag_state = params[:tag][:tag_state]
+
+			if tag_state != ""
+				params[:tag][:tag_number] = "#{tag_state}#{params[:tag][:tag_number]}"
+			else
+				@tag = Tag.new
+				@tag.errors.add(:tag_state, "must be selected")
+				render 'users/show', user: current_user
+			end
 		end
 
 end

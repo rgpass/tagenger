@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
 				params[:message][:tag_number] = "#{tag_state}#{params[:message][:tag_number]}"
 			else
 				@message = Message.new
-				@message.errors.add(:tag_state, "can not be nil")
+				@message.errors.add(:tag_state, "must be selected")
 				render 'new'
 			end
 		end

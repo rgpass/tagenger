@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @tag = Tag.new
     @user = User.find(params[:id])
     @received_messages = []
     @user.tags.each do |tag|
