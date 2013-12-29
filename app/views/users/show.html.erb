@@ -23,6 +23,7 @@
 			</p>
 		<% end %>
 
+		<%# Add state selector here as well and parse it in tags controller %>
 		<%= form_for Tag.new do |f| %>
 			<%= f.text_field :tag_number, placeholder: "Tag Number" %>
 			<%= f.submit "Add", class: "btn btn-large btn-primary" %>

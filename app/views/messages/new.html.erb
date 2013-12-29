@@ -3,9 +3,8 @@
   <%# render 'shared/error_messages' %>
   <h4 class="small-margin text-left"> Submit </h4>
   
-  <%# f.select(:tag_number, ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 4']) %>
   <%# f.select(:object_field, ['Item 1', ...], {}, { :class => 'my_style_class' }) %>
-  <%= f.select(:tag_state, %w{ GA WV DE MD VA }, {:selected => @temp}) %>
+  <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp}) %>
   <%= f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
   <%= f.text_field :content, class:"form-control input-lg small-margin", placeholder:"Content" %>
   <%= f.hidden_field :user_id %>
