@@ -1,4 +1,5 @@
 <!-- TODO: Test a long, single word message. Should wrap around, not cause horizontal scrolling -->
+<!-- TODO: Add a button that forwards to submit_path -->
 <% provide(:title, @user.first_name) %>
 <div class="row">
 	<aside class="col-md-2 left-pad">
@@ -38,7 +39,7 @@
 			<% @sent_messages.each do |message| %>
 				<div class="row">
 					<div class="col-md-2"><%= message.tag_number %></div>
-					<div class="col-md-10"><%= message.content %> </div>
+					<div class="col-md-10"><%= wrap(message.content) %> </div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -62,7 +63,7 @@
 			<% @received_messages.each do |message| %>
 				<div class="row">
 					<div class="col-md-2"><%= message.tag_number %></div>
-					<div class="col-md-10"><%= message.content %> </div>
+					<div class="col-md-10"><%= wrap(message.content) %> </div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
