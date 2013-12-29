@@ -42,7 +42,15 @@ class MessagesController < ApplicationController
 		end
 
 		def parse_tag
-			params[:message][:tag_number] = "#{params[:message][:tag_state]}#{params[:message][:tag_number]}"
+			tag_state = params[:message][:tag_state]
+			
+			if tag_state != ""
+				params[:message][:tag_number] = "#{tag_state}#{params[:message][:tag_number]}"
+			else
+				@message = Message.new
+				@message.errors.add(:tag_state, "can not be nil")
+				render 'new'
+			end
 		end
 
 		# TODO: Add message_owner
