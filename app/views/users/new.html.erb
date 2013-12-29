@@ -11,7 +11,7 @@
 
       <div class="col-sm-4">
         <%= form_for(@user) do |f| %>
-          <%= render 'shared/error_messages' %>
+          <%= render 'shared/error_messages', object: f.object %>
           <h4 class="small-margin text-left"> Sign Up </h4>
           
           <%= f.text_field :first_name, class:"form-control input-lg small-margin", placeholder:"First Name"  %>

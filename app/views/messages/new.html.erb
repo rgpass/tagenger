@@ -1,12 +1,12 @@
 <%= form_for(@message) do |f| %>
   <!-- TODO: Edit error_messages to differentiate between @user and @message -->
-  <%# render 'shared/error_messages' %>
+  <%= render 'shared/error_messages', object: f.object %>
   <h4 class="small-margin text-left"> Submit </h4>
   
   <%# f.select(:object_field, ['Item 1', ...], {}, { :class => 'my_style_class' }) %>
   <%# TODO: Don't allow state to be empty -- make test for this %>
   <div class="input-group">
-    <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, prompt: "What State?", required: true}, { class: "form-control"}) %>
+    <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, include_blank: "What State?"}, { class: "form-control"}) %>
     <%= f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
   </div>
   <%= f.text_field :content, class:"form-control input-lg small-margin", placeholder:"Content" %>
