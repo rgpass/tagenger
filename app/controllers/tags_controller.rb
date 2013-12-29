@@ -15,7 +15,13 @@ class TagsController < ApplicationController
 		redirect_to current_user
 	end
 
-	# TODO: Add delete user_tag connection
+	def remove_user_tag
+		@user = current_user
+		@tag = Tag.find(params[:id])
+		@user.user_tags.find_by(user_id: @user.id, tag_id: @tag.id).destroy
+		flash[:success] = "Tag removed."
+		redirect_to current_user
+	end
 
 	private
 
