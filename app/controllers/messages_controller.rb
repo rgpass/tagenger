@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
 	# TODO: Add test for correct_user
 	# before_action :signed_in_user, only: [:create, :destroy]
 	before_action :correct_user, only: :destroy
+	before_action :parse_tag,    only: :create
 
 	attr_accessor :tag_state
 
@@ -15,7 +16,6 @@ class MessagesController < ApplicationController
 		@message = Message.new(message_params)
 		@message.user_id = current_user.id
 		@user = current_user
-		@message[:tag_number] = @message[:tag_state] + @message[:tag_number]
 		if @message.save
       # sign_in @user
       flash[:success] = "Message sent!"
@@ -39,6 +39,10 @@ class MessagesController < ApplicationController
 		def correct_user
 			@message = current_user.messages.find_by(id: params[:id])
 			redirect_to root_url if @message.nil?
+		end
+
+		def parse_tag
+			params[:message][:tag_number] = "#{params[:message][:tag_state]}#{params[:message][:tag_number]}"
 		end
 
 		# TODO: Add message_owner
