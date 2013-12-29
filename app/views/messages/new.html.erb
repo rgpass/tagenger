@@ -4,8 +4,11 @@
   <h4 class="small-margin text-left"> Submit </h4>
   
   <%# f.select(:object_field, ['Item 1', ...], {}, { :class => 'my_style_class' }) %>
-  <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp}) %>
-  <%= f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
+  <%# TODO: Don't allow state to be empty -- make test for this %>
+  <div class="input-group">
+    <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, prompt: "What State?", required: true}, { class: "form-control"}) %>
+    <%= f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
+  </div>
   <%= f.text_field :content, class:"form-control input-lg small-margin", placeholder:"Content" %>
   <%= f.hidden_field :user_id %>
 
