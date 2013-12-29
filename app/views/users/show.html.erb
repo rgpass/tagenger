@@ -26,9 +26,10 @@
 		<h5>Add a Tag</h5>
 		<%# Add state selector here as well and parse it in tags controller %>
 		<%= form_for @tag do |f| %>
+			<%= render 'shared/error_messages', object: f.object %>
 			<%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, include_blank: "What State?"}, { class: "form-control"}) %>
 			<%= f.text_field :tag_number, placeholder: "Tag Number" %>
-			
+
 			<%= f.submit "Add", class: "btn btn-large btn-primary" %>
 		<% end %>
 
@@ -70,7 +71,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						Sent in by <%= message.user.first_name %> <%= message.user.last_initial %>. <%= time_ago_in_words(message.created_at) %> ago.
-						<%# Ask Jordan if he thinks we should add the functionality to be able to delete received messages %>
+						<%# TODO: Ask Jordan if he thinks we should add the functionality to be able to delete received messages %>
 					</div>
 				</div>
 				<hr>

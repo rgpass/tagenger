@@ -1,10 +1,8 @@
 <%= form_for(@message) do |f| %>
-  <!-- TODO: Edit error_messages to differentiate between @user and @message -->
   <%= render 'shared/error_messages', object: f.object %>
   <h4 class="small-margin text-left"> Submit </h4>
   
-  <%# f.select(:object_field, ['Item 1', ...], {}, { :class => 'my_style_class' }) %>
-  <%# TODO: Don't allow state to be empty -- make test for this %>
+  <%# TODO: Make test for empty state %>
   <div class="input-group">
     <%= f.select(:tag_state, options_for_select(state_arr), {:selected => @temp, include_blank: "What State?"}, { class: "form-control"}) %>
     <%= f.text_field :tag_number, class:"form-control input-lg small-margin", placeholder:"Tag Number"  %>
@@ -41,8 +39,6 @@ Caught picking nose: <%= image_tag("icon_19495.svg") %> <br />
           <%= render 'shared/states2' %>
         </div>
         <div class="col-md-2">
-          <!-- TODO: Replace with Rails form and figure out Rails/jQuery to combine states and plate number inputs -->
-          <!-- http://stackoverflow.com/questions/11144030/using-multiple-input-fields-for-one-attribute -->
           <input type="text" class="form-control" placeholder="Plate Number">
         </div>
       </div>

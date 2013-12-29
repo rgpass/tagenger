@@ -36,7 +36,6 @@ class TagsController < ApplicationController
 			Tag.find_by_tag_number(params[:tag_number])
 		end
 
-		# Testing this out in the messages_controller first
 		def parse_tag
 			tag_state = params[:tag][:tag_state]
 
@@ -45,7 +44,8 @@ class TagsController < ApplicationController
 			else
 				@tag = Tag.new
 				@tag.errors.add(:tag_state, "must be selected")
-				render 'users/show', user: current_user
+				# TODO: Change to render, then figure out why error_messages aren't showing
+				redirect_to user_path(current_user)
 			end
 		end
 
